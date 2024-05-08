@@ -1,0 +1,13 @@
+version: '24'
+
+services:
+  app:
+    build: .docker
+    environment:
+        USER_ID: ${USER_ID:-0}
+        GROUP_ID: ${GROUP_ID:-0}
+    ports:
+      - "5173:80"
+    volumes:
+      - .:/var/www/html
+    command: bash -c "npm install && composer install"
